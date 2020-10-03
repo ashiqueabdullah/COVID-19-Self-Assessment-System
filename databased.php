@@ -1,6 +1,6 @@
 <?php 
     class databased{
-    public $dbname="picchichat";
+    public $dbname="covid19";
     public $user="root";
     public $pass="";
     public $host="localhost";
