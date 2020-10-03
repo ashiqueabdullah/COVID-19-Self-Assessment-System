@@ -1,6 +1,7 @@
 <?php
 include_once 'header.php';
 include_once 'function.php';
+$GLOBALS['a']="";
 ?>
     <!--  ======================= Start Header Area ============================== -->
 
@@ -13,32 +14,34 @@ include_once 'function.php';
             </center>
             <div class="row">
                 <div class="col-md-6 offset-md-3">
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data" onsubmit="return validation()">
                     <?php
                       if(isset($_POST['submit'])){
                         $phpcls=new mainClass();
-                        echo $result=$phpcls->valueSave($_POST);
+                        $result=$phpcls->valueSave($_POST);
+                        $a=$result;
                       }
                     ?>
+                    <input style="visibility:hidden" type="text" id="as" value="<?php echo $a ?>">
                         <div class="form-row">
                             <div class="col-md-6">
                               <label>Please enter your Age</label>
-                              <input type="number" class="form-control" name="age" placeholder="Enter age">
+                              <input id="age" type="number" class="form-control" name="age" placeholder="Enter age">
                             </div>
                             <div class="col-md-6">
                               <label>Body temperature</label>
-                              <input type="number" class="form-control" name="tempa" placeholder="Enter Body temperature">
+                              <input type="number" class="form-control" name="tempa" id="tempa" placeholder="Enter Body temperature">
                             </div>
                         </div>
                         <label class="mt-1">Please select gender</label>
                         <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" value="M">
+                          <input class="form-check-input" type="radio" name="gender" id="gender" value="M">
                           <label class="form-check-label" >
                             Male
                           </label>
                         </div>
                           <div class="form-check">
-                          <input class="form-check-input" type="radio" name="gender" value="F">
+                          <input class="form-check-input" type="radio" name="gender" id="gender" value="F">
                           <label class="form-check-label" >
                             Female
                           </label>
@@ -104,6 +107,16 @@ include_once 'function.php';
                 </div>
             </div>
         </div>
+        
+    </div>
+    <div class="footer pt-4 pb-2">
+    
+      <div class="container">
+          <p>This COVID-19 Self Assessment System is only for software
+        development purpose and may not yield actual result. Any
+        information given by users of this system will not be disclosed
+        or store to anywhere.</p>
+      </div>
     </div>
 
     <!--  ======================= End Header Area ============================== -->
@@ -111,6 +124,7 @@ include_once 'function.php';
     <!--  ======================= Start Main Area ================================ -->
      
     <!--  ======================= End Main Area ================================ -->
+
 
 <?php
   include_once 'footer.php';
